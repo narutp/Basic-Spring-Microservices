@@ -49,13 +49,13 @@
             </div>
             <!-- <input type="button" class="btn btn-info" id="form--registBtn" value="Register" onclick="registerClicked()"> -->
           </form>
-          <div class="alert alert-danger" role="alert" id="form--alert-message" style="display:none;">
+          <div class="notification is-danger" role="alert" id="form--alert-message" style="display:none;">
             <p id="result"></p>Here is <a href="register.html" class="alert-link">register link</a>.
           </div>
         </div>
         <div class="col-6">
           <div align="right">
-            <div id="form--title1">Spring Framework practice</div>
+            <div id="form--title1">Spring Framework practice <span class="icon is-medium"><i class="fa fa-briefcase"></i></span></div>
             <div id="form--title2">2017/09/03</div>
           </div>
           <div style="margin-left: 450px;">
@@ -92,6 +92,9 @@
     #form--title2 {
       font-size: 25px;
       padding-bottom: 5px;
+    }
+    #form--username, #form--password {
+      margin-bottom: 10px;
     }
     #form--title1 {
       font-size: 30px;
