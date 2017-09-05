@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
     <title></title>
   </head>
   <body>
@@ -10,8 +12,8 @@
       <div class="row">
         <div class="col-6">
           <div>
-            <h2>Spring Framework practice</h2>
-            <h3>2017/09/03</h3>
+            <div id="register--title1">Spring Framework practice</div>
+            <div id="register--title2">2017/09/03</div>
           </div>
           <div class="alert alert-danger" role="alert" id="form--alert-message" style="display:none;">
             <p id="result"></p>Here is <a href="#" class="alert-link">register link</a>.
@@ -19,7 +21,7 @@
         </div>
         <div class="col-6">
           <div id="register--form">
-            <h3>Registration</h3>
+            <div id="register--title2" align="right">Registration</div>
             <form id="register--form-container">
               <div class="form--group">
                 <label>Username</label>
@@ -29,7 +31,11 @@
                 <label>Password</label>
                 <input type="password" class="form-control" id="register--password" placeholder="Please type your password">
               </div>
-              <input type="button" class="btn btn-primary" id="register--registerBtn" value="Submit" onclick="register()">
+              <!-- <input type="button" class="btn btn-primary" id="register--registerBtn" value="Submit" onclick="register()"> -->
+              <div align="right">
+                <a id="register--registerBtn" class="button is-primary is-outlined" onclick="register()">Submit</a>
+                <a id="register--backBtn" class="button is-danger is-outlined" onclick="back()">Back</a>
+              </div>
             </form>
           </div>
         </div>
@@ -40,7 +46,7 @@
   <script src="js/myForm.js"></script>
   </body>
   <script>
-    function logout () {
+    function back () {
       window.location = "index.html"
     }
   </script>
@@ -51,6 +57,17 @@
   #register--form {
     border: 1px solid #c2cbd1;
     padding: 25px 25px 25px 25px;
+  }
+  #register--registerBtn, #register--backBtn {
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  #register--title2 {
+    font-size: 25px;
+    padding-bottom: 5px;
+  }
+  #register--title1 {
+    font-size: 30px;
   }
   </style>
 </html>

@@ -11,6 +11,19 @@
   </head>
   <body>
     <div class="container">
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="http://bulma.io/images/bulma-logo.png" width="112" height="28">
+          </a>
+          <a class="navbar-item">
+            <img src="http://cfile10.uf.tistory.com/image/2526FB4757AAD5FF2594F4" width="112" height="58">
+          </a>
+        </div>
+        <div class="navbar-menu">
+          <!-- navbar start, navbar end -->
+        </div>
+      </nav>
       <!-- <form id="helloName">
         <div class="form-group">
           <label for="name">Enter a name</label>
@@ -29,8 +42,12 @@
               <label>Password</label>
               <input type="password" class="form-control" id="form--password" placeholder="Please type your password">
             </div>
-            <input type="button" class="btn btn-primary" id="form--loginBtn" value="Login" onclick="login()">
-            <input type="button" class="btn btn-info" id="form--registBtn" value="Register" onclick="registerClicked()">
+            <!-- <input type="button" class="btn btn-primary" id="form--loginBtn" value="Login" onclick="login()"> -->
+            <div align="right">
+              <a id="form--loginBtn" class="button is-primary is-outlined" onclick="login()">Login</a>
+              <a id="form--registBtn" class="button is-warning is-outlined" onclick="registerClicked()">Register</a>
+            </div>
+            <!-- <input type="button" class="btn btn-info" id="form--registBtn" value="Register" onclick="registerClicked()"> -->
           </form>
           <div class="alert alert-danger" role="alert" id="form--alert-message" style="display:none;">
             <p id="result"></p>Here is <a href="register.html" class="alert-link">register link</a>.
@@ -38,9 +55,13 @@
         </div>
         <div class="col-6">
           <div align="right">
-            <h2>Spring Framework practice</h2>
-            <h3>2017/09/03</h3>
-            
+            <div id="form--title1">Spring Framework practice</div>
+            <div id="form--title2">2017/09/03</div>
+          </div>
+          <div style="margin-left: 450px;">
+            <li>Bootstrap</li>
+            <li>Bulma</li>
+            <li>Jquery</li>
           </div>
         </div>
       </div>
@@ -53,7 +74,7 @@
   </body>
   <script>
     function registerClicked () {
-      window.location = "test.html"
+      window.location = "register.html"
     }
   </script>
   <style scoped>
@@ -68,8 +89,12 @@
       margin-top: 15px;
       cursor: pointer;
     }
-    h2, h3 {
-      color: grey;
+    #form--title2 {
+      font-size: 25px;
+      padding-bottom: 5px;
+    }
+    #form--title1 {
+      font-size: 30px;
     }
   </style>
 </html>
