@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <!-- <form id="helloName">
+        <div class="form-group">
+          <label for="name">Enter a name</label>
+          <input type="text" class="form-control" id="name" placeholder="Aime">
+        </div>
+      </form> -->
+
+      <div class="row">
+        <div class="col-6">
+          <form id="form--form-container">
+            <div class="form--group">
+              <label>Username</label>
+              <input class="form-control" id="form--username" placeholder="Please type your username">
+            </div>
+            <div class="form--group">
+              <label>Password</label>
+              <input type="password" class="form-control" id="form--password" placeholder="Please type your password">
+            </div>
+            <input type="button" class="btn btn-primary" id="form--loginBtn" value="Login" onclick="login()">
+            <input type="button" class="btn btn-info" id="form--registBtn" value="Register" onclick="registerClicked()">
+          </form>
+          <div class="alert alert-danger" role="alert" id="form--alert-message" style="display:none;">
+            <p id="result"></p>Here is <a href="#" class="alert-link">register link</a>.
+          </div>
+        </div>
+        <div class="col-6">
+          <div align="right">
+            <h2>Spring Framework practice</h2>
+            <h3>2017/09/03</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/myForm.js"></script>
+  </body>
+  <script>
+    function registerClicked () {
+      window.location = "register.html"
+    }
+  </script>
+  <style scoped>
+    .container {
+      margin-top: 30px;
+    }
+    #form--form-container {
+      border: 1px solid #c2cbd1;
+      padding: 15px 15px 15px 15px;
+    }
+    #form--loginBtn, #form--registBtn {
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    h2, h3 {
+      color: grey;
+    }
+  </style>
+</html>

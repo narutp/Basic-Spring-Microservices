@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="success--message">
+        <div class="row">
+          <div class="col">
+            <h2>Login Success!</h2>
+          </div>
+          <div class="col" align="right">
+            <input type="button" class="btn btn-danger" id="form--logoutBtn" value="Logout" onclick="logout()">
+          </div>
+        </div>
+        <hr>
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <hr>
+        <div>
+          <img id="success--image" src="http://az616578.vo.msecnd.net/files/2016/06/10/636011804533596877279417241_o-SUCCESS-facebook-3.jpg">
+        </div>
+      </div>
+    </div>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  </body>
+  <script>
+    function logout () {
+      window.location = "index.html"
+    }
+  </script>
+  <style scoped>
+  .container {
+    margin-top: 30px;
+  }
+  #success--message {
+    border: 1px solid #c2cbd1;
+    padding: 25px 25px 25px 25px;
+  }
+  #success--image {
+    max-width: 100%;
+  }
+  </style>
+</html>

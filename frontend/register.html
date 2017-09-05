@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <h2>Spring Framework practice</h2>
+            <h3>2017/09/03</h3>
+          </div>
+          <div class="alert alert-danger" role="alert" id="form--alert-message" style="display:none;">
+            <p id="result"></p>Here is <a href="#" class="alert-link">register link</a>.
+          </div>
+        </div>
+        <div class="col-6">
+          <div id="register--form">
+            <h3>Registration</h3>
+            <form id="register--form-container">
+              <div class="form--group">
+                <label>Username</label>
+                <input class="form-control" id="register--username" placeholder="Please type your username">
+              </div>
+              <div class="form--group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="register--password" placeholder="Please type your password">
+              </div>
+              <input type="button" class="btn btn-primary" id="register--registerBtn" value="Submit" onclick="register()">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/myForm.js"></script>
+  </body>
+  <script>
+    function logout () {
+      window.location = "index.html"
+    }
+  </script>
+  <style scoped>
+  .container {
+    margin-top: 30px;
+  }
+  #register--form {
+    border: 1px solid #c2cbd1;
+    padding: 25px 25px 25px 25px;
+  }
+  </style>
+</html>
