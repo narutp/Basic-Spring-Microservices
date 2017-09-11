@@ -1,34 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <nav class="navbar">
-      <a class="navbar-item">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-      </a>
-      <div class="navbar-item has-dropdown">
-        <a class="navbar-link">
-          Docs
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Overview
-          </a>
-          <a class="navbar-item is-active">
-            Elements
-          </a>
-          <a class="navbar-item">
-            Components
-          </a>
-          <hr class="navbar-divider">
-          <div class="navbar-item">
-            Version 0.5.1
-          </div>
+<template lang="html">
+  <div class="footer--container">
+    <footer class="footer" style="margin-top: 130px;">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Project</strong> by <a href="http://jgthms.com">SKE</a>. This project is created for practice using
+            <a href="https://spring.io/">Spring</a> as a structure of the project. The website CSS consist of
+            <a href="http://bulma.io/">Bulma</a>.
+          </p>
+          <p>
+            <a class="icon" href="https://github.com/narutp">
+              <i class="fa fa-github"></i>
+            </a>
+          </p>
         </div>
       </div>
-    </nav>
-  </body>
-</html>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="css">
+</style>
