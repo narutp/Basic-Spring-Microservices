@@ -11,7 +11,7 @@ import database.dao.DatabaseModel;
 
 public class MongoDBMain implements DatabaseModel {
 
-	private static final String DB_NAME = "hellodb";
+	private static final String DB_NAME = "docdb";
     private static final String COLLECTION = "user";
     private static final String MONGO_HOST = "localhost";
     private static final int MONGO_PORT = 27017;

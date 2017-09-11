@@ -7,13 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import database.dao.HelloWorldDAO;
-import main.model.HelloWorld;
+import database.dao.UserDAO;
+import main.model.User;
 
-public class FilewriterDAOimpl implements HelloWorldDAO {
+public class FilewriterDAOimpl implements UserDAO {
 
 	@Override
-	public void create(HelloWorld hw) {
+	public void createUser (User user) {
 		String fileName = "user.txt";
 
 		try {
@@ -25,9 +25,9 @@ public class FilewriterDAOimpl implements HelloWorldDAO {
 
             // Note that write() does not automatically
             // append a newline character.
-            bufferedWriter.write(hw.getName());
+            bufferedWriter.write(user.getName());
             bufferedWriter.newLine();
-            bufferedWriter.write(hw.getPassword());
+            bufferedWriter.write(user.getPassword());
 
             // Always close files.
             bufferedWriter.close();
@@ -38,26 +38,29 @@ public class FilewriterDAOimpl implements HelloWorldDAO {
 	}
 
 	@Override
-	public List<HelloWorld> getAllHelloWorld() {
+	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public HelloWorld getHelloWorldByName(String name) {
+	public User getUserByName(String name) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void updateHelloWorldByName(String name, HelloWorld hw) {
+	public void updateUserByName(String name, User user) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteHelloWorldByName(String name) {
+	public void deleteUserByName(String name) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 }

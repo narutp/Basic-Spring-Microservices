@@ -10,10 +10,12 @@ import org.springframework.data.mongodb.core.query.Update;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
 
-import database.dao.HelloWorldDAO;
-import main.model.HelloWorld;
+import main.model.Document;
+import database.dao.DocumentDAO;
+import database.dao.UserDAO;
+import main.model.User;
 
-public class MongoDAOImpl implements HelloWorldDAO {
+public class MongoDAOImpl implements UserDAO, DocumentDAO {
 	
 	private MongoOperations mongoOps;
 	private static final String COLLECTION = MongoDBMain.getCollection();
@@ -28,38 +30,49 @@ public class MongoDAOImpl implements HelloWorldDAO {
 	}
 	
 	@Override
-	public void create(HelloWorld hw) {
+	public void createUser(User user) {
 		System.out.println("DAO: Add new user");
-		this.mongoOps.insert(hw, COLLECTION);
+		this.mongoOps.insert(user, COLLECTION);
 	}
 
 	@Override
-	public List<HelloWorld> getAllHelloWorld() {
-		return this.mongoOps.findAll(HelloWorld.class, COLLECTION);
+	public List<User> getAllUsers() {
+		return this.mongoOps.findAll(User.class, COLLECTION);
 	}
 
 	@Override
-	public HelloWorld getHelloWorldByName(String name) {
+	public User getUserByName(String name) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("name").is(name));
-		return this.mongoOps.findOne(query, HelloWorld.class, COLLECTION);
+		return this.mongoOps.findOne(query, User.class, COLLECTION);
 	}
 
 	@Override
-	public void updateHelloWorldByName(String name, HelloWorld hw) {
+	public void updateUserByName(String name, User user) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("name").is(name));
 		Update update = new Update();
-		update.set("name", hw.getName());
-		update.set("password", hw.getPassword());
-		this.mongoOps.findAndModify(query, update, HelloWorld.class, COLLECTION);
+		update.set("name", user.getName());
+		update.set("password", user.getPassword());
+		this.mongoOps.findAndModify(query, update, User.class, COLLECTION);
 	}
 
 	@Override
-	public void deleteHelloWorldByName(String name) {
+	public void deleteUserByName(String name) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("name").is(name));
-		WriteResult result = this.mongoOps.remove(query, HelloWorld.class, COLLECTION);
+		WriteResult result = this.mongoOps.remove(query, User.class, COLLECTION);
 	}
 
+	@Override
+	public void create(Document doc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Document> getAllDocuments() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,5 +1,7 @@
 package main.rest;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.GET;
@@ -13,24 +15,28 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
 import main.Application;
-import main.model.HelloWorld;
+import main.model.Document;
+import main.model.User;
 import database.dao.*;
 import database.filewriter.*;
 import database.mongodb.MongoDAOImpl;
 
 @Named
 @Path("/")
-public class HelloWorldRest {
+public class DocumentRest {
 	
-	private HelloWorld hello;
+	private User user;
+	private Document doc;
 	private ApplicationContext ctx = Application.database.getContext();
-	private HelloWorldDAO helloWorldDAO = ctx.getBean("helloWorldDAO", HelloWorldDAO.class);
+	private UserDAO userDAO = ctx.getBean("userDAO", UserDAO.class);
+	private DocumentDAO documentDAO = ctx.getBean("documentDAO", DocumentDAO.class);
 	
 	@Inject
 	private RestTemplate restemplate; 
 	
-	public HelloWorldRest() {
-		this.hello = new HelloWorld();
+	public DocumentRest() {
+		this.user = new User();
+		this.doc = new Document();
 	}
 	
 	@GET
@@ -38,26 +44,35 @@ public class HelloWorldRest {
 	@Produces(MediaType.TEXT_PLAIN)
 	public boolean loginAPI(@PathParam("name") String name, @PathParam("password") String password ){
 		System.out.println("GET: /name/"+name+password);
-//		boolean check = hello.checkLogin(name, password);
-		return true;
+		boolean check = checkLogin(name, password);
+		return check;
 	}
 	
 	@GET
 	@Path("register/{name}/{password}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public boolean registerAPI(@PathParam("name") String name, @PathParam("password") String password ){
-//		hello.setNamePass(name, password);
-		hello.setName(name);
-		hello.setPassword(password);
-		helloWorldDAO.create(hello);
+		user.setName(name);
+		user.setPassword(password);
+		userDAO.createUser(user);
 		return true;
 	}
 	
 	@GET
 	@Path("get/user/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public HelloWorld getUserAPI(@PathParam("name") String name) {
-		HelloWorld hw = helloWorldDAO.getHelloWorldByName(name);
-		return hw;
+	public User getUserAPI(@PathParam("name") String name) {
+		User user = userDAO.getUserByName(name);
+		return user;
+	}
+	
+	public boolean checkLogin(String name, String password) {
+		List<User> userList = userDAO.getAllUsers();
+		for(User user : userList) {
+			if(name.equals(user.getName()) && password.equals(user.getPassword())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
