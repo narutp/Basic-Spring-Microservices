@@ -1,5 +1,15 @@
 <template lang="html">
   <div class="register--container">
+    <div class="hero is-primary">
+      <div class="hero-body">
+        <p class="title">
+          Spring Framework practice
+        </p>
+        <p class="subtitle">
+          Everything you need to <strong>create a website</strong> with Vue, Bulma and MongoDb 2017/09/03
+        </p>
+      </div>
+    </div>
     <div class="register--body">
       <div class="columns">
         <div class="column register--register-box">
@@ -19,16 +29,17 @@
               </span>
             </p>
           </div>
-          <div class="field">
-            <p class="control">
-              <button class="button is-success">
-                Login
-              </button>
-            </p>
+          <div align="right">
+            <button class="button is-success">
+              Submit
+            </button>
+            <button class="button is-danger" @click="backLogin()">
+              Back
+            </button>
           </div>
         </div>
         <div class="column">
-          Test
+          <img src="https://www.flmontreal.com/wp-content/uploads/2014/09/Register-Icon.png" width="200px">
         </div>
       </div>
     </div>
@@ -37,6 +48,11 @@
 
 <script>
 export default {
+  methods: {
+    backLogin () {
+      this.$router.replace({ path: '/' })
+    }
+  }
 }
 </script>
 

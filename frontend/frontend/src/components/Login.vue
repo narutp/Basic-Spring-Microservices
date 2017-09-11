@@ -29,16 +29,17 @@
               </span>
             </p>
           </div>
-          <div class="field">
-            <p class="control">
-              <button class="button is-success">
-                Login
-              </button>
-            </p>
+          <div align="right">
+            <button class="button is-success">
+              Login
+            </button>
+            <button class="button is-info" @click="register()">
+              Register
+            </button>
           </div>
         </div>
         <div class="column">
-          Test
+          <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg" width="200px;">
         </div>
       </div>
     </div>
@@ -54,6 +55,11 @@ export default {
     }
   },
   components: {
+  },
+  methods: {
+    register () {
+      this.$router.replace({ path: '/register' })
+    }
   }
 }
 </script>
