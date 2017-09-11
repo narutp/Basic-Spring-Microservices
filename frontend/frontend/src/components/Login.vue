@@ -15,7 +15,7 @@
         <div class="column login--login-box">
           <div class="field">
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="" placeholder="Username">
+              <input v-model="username" class="input" type="" placeholder="Username">
               <span class="icon is-small is-left">
                 <i class="fa fa-envelope"></i>
               </span>
@@ -23,14 +23,14 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" placeholder="Password">
+              <input v-model="password" class="input" type="password" placeholder="Password">
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
             </p>
           </div>
           <div align="right">
-            <button class="button is-success">
+            <button class="button is-success" @click="login()">
               Login
             </button>
             <button class="button is-info" @click="register()">
@@ -47,11 +47,15 @@
 </template>
 
 <script>
+import Axios from 'axios'
+Axios.defaults.baseURL = 'http://192.168.1.131:8080'
+// Axios.defaults.headers.post['Accept'] = 'application/json'
+// Axios.defaults.headers.post['Content-Type'] = 'application/json'
 export default {
-  name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      username: '',
+      password: ''
     }
   },
   components: {
@@ -59,6 +63,12 @@ export default {
   methods: {
     register () {
       this.$router.replace({ path: '/register' })
+    },
+    login () {
+      Axios.get(`http://localhost:8080/login/${this.username}/${this.password}`).then(function (response) {
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }

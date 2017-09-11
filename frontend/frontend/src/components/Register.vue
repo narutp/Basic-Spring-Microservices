@@ -15,7 +15,7 @@
         <div class="column register--register-box">
           <div class="field">
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="" placeholder="Username">
+              <input v-model="username" class="input" type="" placeholder="Username">
               <span class="icon is-small is-left">
                 <i class="fa fa-envelope"></i>
               </span>
@@ -23,14 +23,14 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" placeholder="Password">
+              <input v-model="password" class="input" type="password" placeholder="Password">
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
             </p>
           </div>
           <div align="right">
-            <button class="button is-success">
+            <button class="button is-success" @click="register()">
               Submit
             </button>
             <button class="button is-danger" @click="backLogin()">
@@ -47,10 +47,24 @@
 </template>
 
 <script>
+import Axios from 'axios'
+Axios.defaults.baseURL = 'http://192.168.1.131:8080'
 export default {
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
   methods: {
     backLogin () {
       this.$router.replace({ path: '/' })
+    },
+    register () {
+      Axios.get(`http://localhost:8080/register/${this.username}/${this.password}`).then(function (response) {
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
   }
 }
