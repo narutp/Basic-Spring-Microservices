@@ -11,7 +11,7 @@
       </div>
     </div>
     <section class="document-table--body">
-      <div class="" align="right">
+      <div class="document-table--button" align="right">
         <button class="button is-primary" @click="generateDocument()">
           <i class="fa fa-plus" aria-hidden="true">  Document</i>
         </button>
@@ -38,12 +38,21 @@
                   {{ props.row.writer }}
               </b-table-column>
 
-              <b-table-column field="createdate" label="Date" sortable centered>
+              <b-table-column field="createdate" label="Create Date" sortable centered>
                   <span class="tag is-success">
                       {{ formatDate(props.row.createdate) }}
                   </span>
               </b-table-column>
 
+              <b-table-column field="lastdate" label="Last Edit Date" sortable centered>
+                  <span class="tag is-success">
+                      {{ formatDate(props.row.lastdate) }}
+                  </span>
+              </b-table-column>
+
+              <b-table-column label="Option" centered>
+                <button class="button is-warning is-small">Edit</button>
+              </b-table-column>
               <!-- <b-table-column label="Option">
                   <b-icon pack="fa"
                       :icon="props.row.gender === 'Male' ? 'mars' : 'venus'">
@@ -97,5 +106,8 @@ export default {
 <style scoped>
 .document-table--body {
   margin: 30px;
+}
+.document-table--button {
+  margin-bottom: 30px;
 }
 </style>
