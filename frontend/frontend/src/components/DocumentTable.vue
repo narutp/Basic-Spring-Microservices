@@ -23,33 +23,33 @@
           :data="tableData"
           :paginated="isPaginated"
           :per-page="5"
-          default-sort="user.first_name">
+          default-sort="title">
 
           <template scope="props">
               <b-table-column field="id" label="ID" width="40" sortable numeric>
                   {{ props.row.id }}
               </b-table-column>
 
-              <b-table-column field="user.first_name" label="Title" sortable>
-                  {{ props.row.user.first_name }}
+              <b-table-column field="title" label="Title" sortable>
+                  {{ props.row.title }}
               </b-table-column>
 
-              <b-table-column field="user.last_name" label="Writer" sortable>
-                  {{ props.row.user.last_name }}
+              <b-table-column field="writer" label="Writer" sortable>
+                  {{ props.row.writer }}
               </b-table-column>
 
-              <b-table-column field="date" label="Date" sortable centered>
+              <b-table-column field="createdate" label="Date" sortable centered>
                   <span class="tag is-success">
-                      {{ new Date(props.row.date).toLocaleDateString() }}
+                      {{ new Date(props.row.createdate).toLocaleDateString() }}
                   </span>
               </b-table-column>
 
-              <b-table-column label="Option">
+              <!-- <b-table-column label="Option">
                   <b-icon pack="fa"
                       :icon="props.row.gender === 'Male' ? 'mars' : 'venus'">
                   </b-icon>
                   {{ props.row.gender }}
-              </b-table-column>
+              </b-table-column> -->
           </template>
       </b-table>
     </section>
@@ -57,15 +57,12 @@
 </template>
 
 <script>
+import Axios from 'axios'
 export default {
   data () {
     return {
-      tableData: [{'id': 1, 'user': {'first_name': 'Jesse', 'last_name': 'Simmons'}, 'date': '2016-10-15 13:43:27', 'gender': 'Male'},
-      {'id': 2, 'user': {'first_name': 'John', 'last_name': 'Jacobs'}, 'date': '2016-12-15 06:00:53', 'gender': 'Female'},
-      {'id': 3, 'user': {'first_name': 'John', 'last_name': 'Jacobs'}, 'date': '2016-12-15 06:00:53', 'gender': 'Male'},
-      {'id': 4, 'user': {'first_name': 'John', 'last_name': 'Jacobs'}, 'date': '2016-12-15 06:00:53', 'gender': 'Male'},
-      {'id': 5, 'user': {'first_name': 'John', 'last_name': 'Jacobs'}, 'date': '2016-12-15 06:00:53', 'gender': 'Male'},
-      {'id': 6, 'user': {'first_name': 'John', 'last_name': 'Jacobs'}, 'date': '2016-12-15 06:00:53', 'gender': 'Male'}],
+      tableData: [{'id': 1, 'title': 'a', 'writer': 'b', 'content': 'c', 'password': 'd', 'createdate': 'e', 'lastdate': 'f'},
+      {'id': 2, 'title': 'a', 'writer': 'b', 'content': 'c', 'password': 'd', 'createdate': 'e', 'lastdate': 'f'}],
       isPaginated: true,
       isPaginationSimple: false,
       defaultSortDirection: 'asc',
@@ -79,6 +76,14 @@ export default {
     generateDocument () {
       this.$router.replace({ path: '/generate-document' })
     }
+  },
+  beforeCreate () {
+    var self = this
+    Axios.get(`http://localhost:8090/get/all-doc/`).then(function (response) {
+      self.tableData = response.data
+    }).catch(function (error) {
+      console.log(error)
+    })
   }
 }
 </script>

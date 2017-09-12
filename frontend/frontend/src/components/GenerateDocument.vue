@@ -14,19 +14,19 @@
       <div class="columns">
         <div class="column" align="left">
           <b-field label="Title">
-              <b-input></b-input>
+              <b-input v-model="title"></b-input>
           </b-field>
 
           <b-field label="Writer">
-              <b-input></b-input>
+              <b-input v-model="writer"></b-input>
           </b-field>
 
           <b-field label="Content">
-              <b-input type="text"></b-input>
+              <b-input v-model="content" type="text"></b-input>
           </b-field>
 
           <b-field label="Password">
-              <b-input type="text"></b-input>
+              <b-input v-model="password" type="text"></b-input>
           </b-field>
 
           <div class="generate-document--button" align="right">
