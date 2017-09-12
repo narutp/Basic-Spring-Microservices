@@ -12,7 +12,8 @@ import database.dao.DatabaseModel;
 public class MongoDBMain implements DatabaseModel {
 
 	private static final String DB_NAME = "docdb";
-    private static final String COLLECTION = "user";
+    private static final String USER_COLLECTION = "user";
+    private static final String DOCUMENT_COLLECTION = "document";
     private static final String MONGO_HOST = "localhost";
     private static final int MONGO_PORT = 27017;
     private static MongoClient mongo;
@@ -20,7 +21,7 @@ public class MongoDBMain implements DatabaseModel {
  
     public void run() {
         try {
-        	System.out.println("connecting to mongodb at "+MONGO_HOST+":"+MONGO_PORT+"...\ndatabase name: "+DB_NAME+"\ncollection: "+COLLECTION);
+        	System.out.println("connecting to mongodb at "+MONGO_HOST+":"+MONGO_PORT+"...\ndatabase name: "+DB_NAME+"\ncollection: "+USER_COLLECTION);
             mongo = new MongoClient(
                     MONGO_HOST, MONGO_PORT);
             System.out.println("connected!");
@@ -37,10 +38,12 @@ public class MongoDBMain implements DatabaseModel {
     public static String getDBName(){
     	return DB_NAME;
     }
-    public static String getCollection(){
-    	return COLLECTION;
+    public static String getUserCollection(){
+    	return USER_COLLECTION;
     }
-
+    public static String getDocumentCollection(){
+    	return DOCUMENT_COLLECTION;
+    }
     public static String getHost(){
     	return MONGO_HOST;
     }

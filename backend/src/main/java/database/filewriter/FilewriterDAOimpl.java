@@ -60,6 +60,12 @@ public class FilewriterDAOimpl implements UserDAO {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean checkLogin(String name, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	
