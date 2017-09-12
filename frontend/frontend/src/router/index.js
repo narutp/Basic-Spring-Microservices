@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import DocumentTable from '@/components/DocumentTable'
 import GenerateDocument from '@/components/GenerateDocument'
+import EditForm from '@/components/EditForm'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/generate-document',
       name: 'GenerateDocument',
       component: GenerateDocument
+    },
+    {
+      path: '/test',
+      name: 'EditForm',
+      component: EditForm
     }
   ]
 })

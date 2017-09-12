@@ -51,8 +51,33 @@
               </b-table-column>
 
               <b-table-column label="Option" centered>
-                <button class="button is-warning is-small">Edit</button>
+                <button class="button is-warning is-small" @click="toggleEditDialog(props.row)">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"> Edit</i>
+                </button>
               </b-table-column>
+
+              <el-dialog title="Edit document":visible.sync="isEditFormOpen" size="tiny">
+                <hr>
+                <b-field label="Title">
+                    <b-input v-model="tempRow.title"></b-input>
+                </b-field>
+                <b-field label="Writer">
+                    <b-input v-model="tempRow.writer"></b-input>
+                </b-field>
+                <b-field label="Content">
+                    <b-input v-model="tempRow.contents" type="text"></b-input>
+                </b-field>
+                <b-field label="Password">
+                    <b-input v-model="tempRow.password" type="text"></b-input>
+                </b-field>
+                <button class="button is-primary" @click="edit()">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"> Submit</i>
+                </button>
+              </el-dialog>
+
+              <!-- {{ props.row.title }} -->
+              <!-- <edit-form :tableData="props.row" v-if="isEditFormOpen"></edit-form> -->
+
               <!-- <b-table-column label="Option">
                   <b-icon pack="fa"
                       :icon="props.row.gender === 'Male' ? 'mars' : 'venus'">
@@ -66,6 +91,7 @@
 </template>
 
 <script>
+import EditForm from '@/components/EditForm.vue'
 import moment from 'moment'
 import Axios from 'axios'
 export default {
@@ -76,7 +102,13 @@ export default {
       isPaginated: true,
       isPaginationSimple: false,
       defaultSortDirection: 'asc',
-      perPage: 5
+      perPage: 5,
+      isEditFormOpen: false,
+      newTitle: '',
+      newWriter: '',
+      newContent: '',
+      newPassword: '',
+      tempRow: ''
     }
   },
   methods: {
@@ -89,7 +121,22 @@ export default {
     formatDate (date) {
       let newDate = moment(date)
       return newDate.format('YYYY-MM-DD')
+    },
+    toggleEditDialog (row) {
+      this.isEditFormOpen = true
+      this.tempRow = row
+    },
+    edit () {
+      console.log(this.tempRow)
+      Axios.get(`http://localhost:8090/edit/${this.tempRow.title}/${this.tempRow.writer}/${this.tempRow.contents}/${this.tempRow.password}/${this.tempRow.id}`).then(function (response) {
+        alert('finish')
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
+  },
+  components: {
+    EditForm
   },
   // get data and replace in table data before program create (cycle)
   beforeCreate () {

@@ -6,12 +6,16 @@ import router from './router'
 import bulma from 'bulma/css/bulma.css'
 import Buefy from 'buefy'
 import moment from 'moment'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+import locale from 'element-ui/lib/locale/lang/en'
 import 'buefy/lib/buefy.css'
 
 Vue.config.productionTip = false
 Vue.use(bulma)
 Vue.use(Buefy)
 Vue.use(moment)
+Vue.use(ElementUI, { locale })
 
 /* eslint-disable no-new */
 new Vue({
