@@ -99,6 +99,7 @@ public class MongoDAOImpl implements UserDAO, DocumentDAO {
 	@Override
 	public int getCountDocument() {
 		collection = MongoDBMain.getDocumentCollection();
-		return (Integer)(this.mongoOps.getCollection(collection).getStats().get("count"));
+		List<Document> docList = getAllDocuments();
+		return docList.size();
 	}
 }
