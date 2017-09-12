@@ -1,7 +1,15 @@
 <template lang="html">
-  <div document-table--container>
+  <div class="document-table--container">
     <hr>
-    <section>
+    <section class="document-table--body">
+      <div class="" align="right">
+        <button class="button is-primary" @click="generateDocument()">
+          <i class="fa fa-plus" aria-hidden="true">  Document</i>
+        </button>
+        <button class="button is-danger" @click="logout()">
+          <i class="fa fa-sign-out" aria-hidden="true"> Log out</i>
+        </button>
+      </div>
       <b-table
           :data="tableData"
           :paginated="isPaginated"
@@ -13,11 +21,11 @@
                   {{ props.row.id }}
               </b-table-column>
 
-              <b-table-column field="user.first_name" label="First Name" sortable>
+              <b-table-column field="user.first_name" label="Title" sortable>
                   {{ props.row.user.first_name }}
               </b-table-column>
 
-              <b-table-column field="user.last_name" label="Last Name" sortable>
+              <b-table-column field="user.last_name" label="Writer" sortable>
                   {{ props.row.user.last_name }}
               </b-table-column>
 
@@ -26,8 +34,8 @@
                       {{ new Date(props.row.date).toLocaleDateString() }}
                   </span>
               </b-table-column>
-              
-              <b-table-column label="Gender">
+
+              <b-table-column label="Option">
                   <b-icon pack="fa"
                       :icon="props.row.gender === 'Male' ? 'mars' : 'venus'">
                   </b-icon>
@@ -54,9 +62,20 @@ export default {
       defaultSortDirection: 'asc',
       perPage: 5
     }
+  },
+  methods: {
+    logout () {
+      this.$router.replace({ path: '/' })
+    },
+    generateDocument () {
+      this.$router.replace({ path: '/generate-document' })
+    }
   }
 }
 </script>
 
-<style lang="css">
+<style scoped>
+.document-table--body {
+  margin: 30px;
+}
 </style>

@@ -6,7 +6,7 @@
           Spring Framework practice
         </p>
         <p class="subtitle">
-          Everything you need to <strong>create a website</strong> with Vue, Bulma and MongoDb 2017/09/03
+          Everything you need to <strong>create a website</strong> with Vue, Bulma, Buefy and MongoDb 2017/09/03
         </p>
       </div>
     </div>
