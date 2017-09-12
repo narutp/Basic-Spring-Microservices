@@ -65,7 +65,9 @@ export default {
       this.$router.replace({ path: '/register' })
     },
     login () {
+      let self = this
       Axios.get(`http://localhost:8080/login/${this.username}/${this.password}`).then(function (response) {
+        self.$router.replace({ path: '/document' })
       }).catch(function (error) {
         console.log(error)
       })
