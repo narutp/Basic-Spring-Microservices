@@ -11,3 +11,6 @@ Using vue.js to be frontend framework and mongodb for backend server.
 
   - implement bulma.js
   - implement buefy.js
+  - implement moment.js
+  - implement axios (for use HTTP request, replace jquery)
+  - implement element-ui.js
