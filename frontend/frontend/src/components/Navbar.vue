@@ -33,5 +33,8 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
+.navbar {
+  background-color: white;
+}
 </style>

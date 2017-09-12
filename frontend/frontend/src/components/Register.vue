@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="register--container">
-    <div class="hero is-primary">
+    <div class="hero is-info">
       <div class="hero-body">
         <p class="title">
           Spring Framework practice
