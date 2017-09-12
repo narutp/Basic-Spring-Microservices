@@ -1,6 +1,15 @@
 <template lang="html">
   <div class="document-table--container">
-    <hr>
+    <div class="hero is-danger">
+      <div class="hero-body">
+        <p class="title">
+          Spring Framework practice
+        </p>
+        <p class="subtitle">
+          Everything you need to <strong>create a website</strong> with Vue, Bulma and MongoDb 2017/09/03
+        </p>
+      </div>
+    </div>
     <section class="document-table--body">
       <div class="" align="right">
         <button class="button is-primary" @click="generateDocument()">
