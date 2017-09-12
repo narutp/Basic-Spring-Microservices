@@ -1,5 +1,6 @@
 package main.rest;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,7 +19,6 @@ import main.Application;
 import main.model.Document;
 import main.model.User;
 import database.dao.*;
-import database.filewriter.*;
 import database.mongodb.MongoDAOImpl;
 
 @Named
@@ -42,9 +42,11 @@ public class DocumentRest {
 	@GET
 	@Path("login/{name}/{password}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public boolean loginAPI(@PathParam("name") String name, @PathParam("password") String password ){
+	public boolean loginAPI(
+			@PathParam("name") String name, 
+			@PathParam("password") String password ){
 		System.out.println("GET: /name/"+name+password);
-		boolean check = checkLogin(name, password);
+		boolean check = userDAO.checkLogin(name, password);
 		System.out.println(check);
 		return check;
 	}
@@ -52,7 +54,9 @@ public class DocumentRest {
 	@GET
 	@Path("register/{name}/{password}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public boolean registerAPI(@PathParam("name") String name, @PathParam("password") String password ){
+	public boolean registerAPI(
+			@PathParam("name") String name, 
+			@PathParam("password") String password ){
 		user.setName(name);
 		user.setPassword(password);
 		userDAO.createUser(user);
@@ -69,14 +73,52 @@ public class DocumentRest {
 		return user;
 	}
 	
-	public boolean checkLogin(String name, String password) {
-		List<User> userList = userDAO.getAllUsers();
-		for(User user : userList) {
-			System.out.println("Check login: " + user.getName() + ", " + user.getPassword());
-			if (name.equals(user.getName()) && password.equals(user.getPassword())) {
-				return true;
-			}
-		}
-		return false;
+	@GET
+	@Path("get/all-doc/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Document> getAllDocumentAPI() {
+		List<Document> docList = documentDAO.getAllDocuments();
+		return docList;
 	}
+	
+	@GET
+	@Path("create/{title}/{writer}/{contents}/{password}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public boolean createDocumentAPI(
+			@PathParam("title") String title, 
+			@PathParam("writer") String writer, 
+			@PathParam("contents") String contents, 
+			@PathParam("password") String password){
+		int numId = documentDAO.getCountDocument()+1;
+		String id = String.format("%04d", numId);
+		doc.setId(id);
+		if(title.equals(""))
+			doc.setTitle("-");
+		else
+			doc.setTitle(title);
+		if(writer.equals(""))
+			doc.setWriter("-");
+		else
+			doc.setWriter(writer);
+		if(contents.equals(""))
+			doc.setContents("-");
+		else
+			doc.setContents(contents);
+		doc.setPassword(password);
+		Date date = new Date();
+		doc.setCreatedDate(date);
+		doc.setLastEditedDate(date);
+		documentDAO.createDocument(doc);
+		System.out.println("Set ID: " + doc.getId());
+		System.out.println("Set Title: " + doc.getTitle());
+		System.out.println("Set Writer: " + doc.getWriter());
+		System.out.println("Set Contents: " + doc.getContents());
+		System.out.println("Set Password: " + doc.getPassword());
+		System.out.println("Set Created Date: " + doc.getCreatedDate());
+		System.out.println("Set Last Edited Date: " + doc.getLastEditedDate());
+		return true;
+	}
+	
+	
+	
 }
