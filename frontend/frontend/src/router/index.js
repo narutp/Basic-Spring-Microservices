@@ -19,7 +19,7 @@ export default new Router({
       component: Register
     },
     {
-      path: 'document',
+      path: '/document',
       name: 'DocumentTable',
       component: DocumentTable
     }
