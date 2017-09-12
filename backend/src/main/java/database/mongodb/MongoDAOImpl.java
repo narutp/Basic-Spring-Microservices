@@ -102,4 +102,19 @@ public class MongoDAOImpl implements UserDAO, DocumentDAO {
 		List<Document> docList = getAllDocuments();
 		return docList.size();
 	}
+
+	@Override
+	public void editDocument(Document doc, String id) {
+		collection = MongoDBMain.getDocumentCollection();
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(id));
+		Update update = new Update();
+		update.set("title", doc.getTitle());
+		update.set("writer", doc.getWriter());
+		update.set("contents", doc.getContents());
+		update.set("password", doc.getPassword());
+		update.set("lastEditedDate", doc.getLastEditedDate());
+		this.mongoOps.findAndModify(query, update, Document.class, collection);
+		
+	}
 }

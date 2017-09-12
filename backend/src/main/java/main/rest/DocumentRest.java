@@ -119,6 +119,41 @@ public class DocumentRest {
 		return true;
 	}
 	
+	@GET
+	@Path("edit/{title}/{writer}/{contents}/{password}/{id}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public boolean editDocumentAPI(
+			@PathParam("title") String title, 
+			@PathParam("writer") String writer, 
+			@PathParam("contents") String contents, 
+			@PathParam("password") String password, 
+			@PathParam("id") String id){
+		if(title.equals(""))
+			doc.setTitle("-");
+		else
+			doc.setTitle(title);
+		if(writer.equals(""))
+			doc.setWriter("-");
+		else
+			doc.setWriter(writer);
+		if(contents.equals(""))
+			doc.setContents("-");
+		else
+			doc.setContents(contents);
+		doc.setPassword(password);
+		Date date = new Date();
+		doc.setLastEditedDate(date);
+		documentDAO.editDocument(doc, id);
+		System.out.println("Set ID: " + doc.getId());
+		System.out.println("Set Title: " + doc.getTitle());
+		System.out.println("Set Writer: " + doc.getWriter());
+		System.out.println("Set Contents: " + doc.getContents());
+		System.out.println("Set Password: " + doc.getPassword());
+		System.out.println("Set Created Date: " + doc.getCreatedDate());
+		System.out.println("Set Last Edited Date: " + doc.getLastEditedDate());
+		return true;
+	}
+	
 	
 	
 }
