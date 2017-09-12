@@ -117,4 +117,12 @@ public class MongoDAOImpl implements UserDAO, DocumentDAO {
 		this.mongoOps.findAndModify(query, update, Document.class, collection);
 		
 	}
+
+	@Override
+	public Document getDocumentById(String id) {
+		collection = MongoDBMain.getDocumentCollection();
+		Query query = new Query();
+		query.addCriteria(Criteria.where("id").is(id));
+		return this.mongoOps.findOne(query, Document.class, collection);
+	}
 }

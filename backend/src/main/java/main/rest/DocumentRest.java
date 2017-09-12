@@ -128,6 +128,7 @@ public class DocumentRest {
 			@PathParam("contents") String contents, 
 			@PathParam("password") String password, 
 			@PathParam("id") String id){
+		doc = documentDAO.getDocumentById(id);
 		if(title.equals(""))
 			doc.setTitle("-");
 		else
