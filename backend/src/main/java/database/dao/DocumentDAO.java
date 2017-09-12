@@ -12,5 +12,7 @@ public interface DocumentDAO {
 	public int getCountDocument ();
 	
 	public void editDocument (Document doc, String id);
+	
+	public Document getDocumentById (String id);
 
 }
