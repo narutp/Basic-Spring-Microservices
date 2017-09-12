@@ -3,7 +3,7 @@
     <hr>
     <section class="document-table--body">
       <div class="" align="right">
-        <button class="button is-primary">
+        <button class="button is-primary" @click="generateDocument()">
           <i class="fa fa-plus" aria-hidden="true">  Document</i>
         </button>
         <button class="button is-danger" @click="logout()">
@@ -66,6 +66,9 @@ export default {
   methods: {
     logout () {
       this.$router.replace({ path: '/' })
+    },
+    generateDocument () {
+      this.$router.replace({ path: '/generate-document' })
     }
   }
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import DocumentTable from '@/components/DocumentTable'
+import GenerateDocument from '@/components/GenerateDocument'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/document',
       name: 'DocumentTable',
       component: DocumentTable
+    },
+    {
+      path: '/generate-document',
+      name: 'GenerateDocument',
+      component: GenerateDocument
     }
   ]
 })
