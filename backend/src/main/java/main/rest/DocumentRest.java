@@ -45,6 +45,7 @@ public class DocumentRest {
 	public boolean loginAPI(@PathParam("name") String name, @PathParam("password") String password ){
 		System.out.println("GET: /name/"+name+password);
 		boolean check = checkLogin(name, password);
+		System.out.println(check);
 		return check;
 	}
 	
@@ -71,7 +72,8 @@ public class DocumentRest {
 	public boolean checkLogin(String name, String password) {
 		List<User> userList = userDAO.getAllUsers();
 		for(User user : userList) {
-			if(name.equals(user.getName()) && password.equals(user.getPassword())) {
+			System.out.println("Check login: " + user.getName() + ", " + user.getPassword());
+			if (name.equals(user.getName()) && password.equals(user.getPassword())) {
 				return true;
 			}
 		}

@@ -48,7 +48,7 @@
 
 <script>
 import Axios from 'axios'
-Axios.defaults.baseURL = 'http://192.168.1.131:8080'
+// Axios.defaults.baseURL = 'http://192.168.1.131:8080'
 // Axios.defaults.headers.post['Accept'] = 'application/json'
 // Axios.defaults.headers.post['Content-Type'] = 'application/json'
 export default {
@@ -66,8 +66,12 @@ export default {
     },
     login () {
       let self = this
-      Axios.get(`http://localhost:8080/login/${this.username}/${this.password}`).then(function (response) {
-        self.$router.replace({ path: '/document' })
+      Axios.get(`http://localhost:8090/login/${this.username}/${this.password}`).then(function (response) {
+        if (response.data === true) {
+          self.$router.replace({ path: '/document' })
+        } else {
+          alert('Wrong!')
+        }
       }).catch(function (error) {
         console.log(error)
       })
