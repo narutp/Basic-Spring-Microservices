@@ -55,6 +55,8 @@ public class DocumentRest {
 		user.setName(name);
 		user.setPassword(password);
 		userDAO.createUser(user);
+		System.out.println("Set Name: " + user.getName());
+		System.out.println("Set Pass: " + user.getPassword());
 		return true;
 	}
 	

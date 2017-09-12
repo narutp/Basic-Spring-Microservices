@@ -48,7 +48,7 @@
 
 <script>
 import Axios from 'axios'
-Axios.defaults.baseURL = 'http://192.168.1.131:8080'
+// Axios.defaults.baseURL = 'http://192.168.1.131:8080'
 export default {
   data () {
     return {
@@ -61,7 +61,9 @@ export default {
       this.$router.replace({ path: '/' })
     },
     register () {
-      Axios.get(`http://localhost:8080/register/${this.username}/${this.password}`).then(function (response) {
+      let self = this
+      Axios.get(`http://localhost:8090/register/${this.username}/${this.password}`).then(function (response) {
+        self.$router.replace({ path: '/' })
       }).catch(function (error) {
         console.log(error)
       })
