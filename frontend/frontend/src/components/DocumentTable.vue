@@ -40,7 +40,7 @@
 
               <b-table-column field="createdate" label="Date" sortable centered>
                   <span class="tag is-success">
-                      {{ new Date(props.row.createdate).toLocaleDateString() }}
+                      {{ formatDate(props.row.createdate) }}
                   </span>
               </b-table-column>
 
@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import Axios from 'axios'
 export default {
   data () {
@@ -75,8 +76,13 @@ export default {
     },
     generateDocument () {
       this.$router.replace({ path: '/generate-document' })
+    },
+    formatDate (date) {
+      let newDate = moment(date)
+      return newDate.format('YYYY-MM-DD')
     }
   },
+  // get data and replace in table data before program create (cycle)
   beforeCreate () {
     var self = this
     Axios.get(`http://localhost:8090/get/all-doc/`).then(function (response) {
