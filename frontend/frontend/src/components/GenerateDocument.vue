@@ -16,6 +16,10 @@
               <b-input type="text"></b-input>
           </b-field>
 
+          <b-field label="Password">
+              <b-input type="text"></b-input>
+          </b-field>
+
           <div class="generate-document--button" align="right">
             <button class="button is-primary" @click="submitDocument()">
               Submit
@@ -35,10 +39,24 @@
 </template>
 
 <script>
+import Axios from 'axios'
 export default {
+  data () {
+    return {
+      title: '',
+      writer: '',
+      content: '',
+      password: ''
+    }
+  },
   methods: {
     submitDocument () {
-      this.$router.replace({ path: '/document' })
+      let self = this
+      Axios.get(`http://localhost:8090/create/${this.title}/${this.writer}/${this.content}/${this.password}`).then(function (response) {
+        self.$router.replace({ path: '/document' })
+      }).catch(function (error) {
+        console.log(error)
+      })
     },
     back () {
       this.$router.replace({ path: '/document' })

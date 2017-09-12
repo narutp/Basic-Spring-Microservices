@@ -118,7 +118,4 @@ public class DocumentRest {
 		System.out.println("Set Last Edited Date: " + doc.getLastEditedDate());
 		return true;
 	}
-	
-	
-	
 }
