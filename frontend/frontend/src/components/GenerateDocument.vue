@@ -1,6 +1,15 @@
 <template lang="html">
   <div class="generate-document--container">
-    <hr>
+    <div class="hero is-warning">
+      <div class="hero-body">
+        <p class="title">
+          Generate Document
+        </p>
+        <p class="subtitle">
+          Including title, writer, content and password.
+        </p>
+      </div>
+    </div>
     <section class="generate-document--body">
       <div class="columns">
         <div class="column" align="left">
@@ -31,7 +40,7 @@
           </div>
         </div>
         <div class="column">
-          <p style="font-size: 60px;">Document</p>
+          <!-- <p style="font-size: 60px;">Document</p> -->
         </div>
       </div>
     </section>
