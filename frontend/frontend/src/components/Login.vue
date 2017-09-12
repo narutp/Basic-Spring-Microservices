@@ -42,6 +42,16 @@
           <img src="https://image.freepik.com/free-icon/male-user-shadow_318-34042.jpg" width="200px;">
         </div>
       </div>
+      <div class="columns">
+        <div class="column">
+          <div class="notification is-danger" v-if="checkLoginFailed">
+            Wrong username or password <strong>Please register</strong> first.
+          </div>
+        </div>
+        <div class="column">
+
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,7 +65,8 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      checkLoginFailed: false
     }
   },
   components: {
@@ -69,8 +80,9 @@ export default {
       Axios.get(`http://localhost:8090/login/${this.username}/${this.password}`).then(function (response) {
         if (response.data === true) {
           self.$router.replace({ path: '/document' })
+          self.checkLoginFailed = false
         } else {
-          alert('Wrong!')
+          self.checkLoginFailed = true
         }
       }).catch(function (error) {
         console.log(error)
