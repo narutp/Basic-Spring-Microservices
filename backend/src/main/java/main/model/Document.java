@@ -2,9 +2,14 @@ package main.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
 public class Document {
 	
-	private String id, title, writer, contents, password;
+	@Id
+	private String id;
+	
+	private String title, writer, contents, password;
 	private Date createdDate, lastEditedDate;
 	
 	public String getId() {

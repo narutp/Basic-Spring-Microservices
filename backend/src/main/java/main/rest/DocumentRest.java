@@ -89,9 +89,6 @@ public class DocumentRest {
 			@PathParam("writer") String writer, 
 			@PathParam("contents") String contents, 
 			@PathParam("password") String password){
-		int numId = documentDAO.getCountDocument()+1;
-		String id = String.format("%04d", numId);
-		doc.setId(id);
 		if(title.equals(""))
 			doc.setTitle("-");
 		else
@@ -155,6 +152,12 @@ public class DocumentRest {
 		return true;
 	}
 	
-	
+	@GET
+	@Path("delete/document/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean deleteDocumentAPI(@PathParam("id") String id) {
+		documentDAO.deleteDocumentById(id);
+		return true;
+	}
 	
 }
