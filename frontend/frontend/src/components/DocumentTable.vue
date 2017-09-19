@@ -54,6 +54,9 @@
                 <button class="button is-warning is-small" @click="toggleEditDialog(props.row)">
                   <i class="fa fa-pencil-square-o" aria-hidden="true"> Edit</i>
                 </button>
+                <button class="button is-danger is-small" @click="deleteTable(props.row)">
+                  <i class="fa fa-trash-o" aria-hidden="true">Delete</i>
+                </button>
               </b-table-column>
 
               <el-dialog title="Edit document":visible.sync="isEditFormOpen" size="tiny">
@@ -129,7 +132,19 @@ export default {
     edit () {
       console.log(this.tempRow)
       Axios.get(`http://localhost:8090/edit/${this.tempRow.title}/${this.tempRow.writer}/${this.tempRow.contents}/${this.tempRow.password}/${this.tempRow.id}`).then(function (response) {
-        alert('finish')
+        alert('finish edit')
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+    deleteTable (row) {
+      let self = this
+      this.tempRow = row
+      Axios.get(`http://localhost:8090/delete/document/${this.tempRow.id}`).then(function (response) {
+        self.$router.go({
+          path: '/document',
+          force: true
+        })
       }).catch(function (error) {
         console.log(error)
       })
